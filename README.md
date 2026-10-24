@@ -59,7 +59,7 @@ L25   Ocean Sun     L    female  1928
 Orca IDs and names follow the Southern Resident catalog maintained by the [Center for Whale Research](https://www.whaleresearch.com/). L25's birth year is an estimate. This dataset is a small sample, not the full population.
 
 ## Future Ideas
-
+- Full Interactive Web App
 - Add the full Southern Resident population
 - Filter sightings by date range or location
 - Export stats to a CSV file
