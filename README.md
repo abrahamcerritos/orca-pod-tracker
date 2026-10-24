@@ -1,4 +1,4 @@
-# 🐬 🫍Orca Pod Tracker
+# 🫍Orca Pod Tracker🫍
 
 A command-line Python app for tracking the Southern Resident orcas of the Pacific Northwest — the J, K, and L pods. Look up individual whales, log sightings, and view stats about each pod.
 
