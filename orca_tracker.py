@@ -75,6 +75,30 @@ def log_sighting(data):
     print(f"Sighting of {orca_id} saved!")
 
 
+def show_stats(data):
+    """Show pod sizes, average ages, and sighting totals."""
+    current_year = date.today().year
+
+    print("\n=== Pod Stats ===")
+    for pod in ["J", "K", "L"]:
+        members = [orca for orca in data["orcas"] if orca["pod"] == pod]
+        if not members:
+            continue
+        ages = [current_year - orca["birth_year"] for orca in members]
+        avg_age = sum(ages) / len(ages)
+        print(f"{pod} pod: {len(members)} orcas, average age {avg_age:.1f}")
+
+    print("\n=== Sightings ===")
+    sightings = data["sightings"]
+    print(f"Total sightings: {len(sightings)}")
+
+    if sightings:
+        counts = {}
+        for sighting in sightings:
+            orca_id = sighting["orca_id"]
+            counts[orca_id] = counts.get(orca_id, 0) + 1
+        top_id = max(counts, key=counts.get)
+        print(f"Most sighted: {top_id} ({counts[top_id]} sightings)")
 def main():
     data = load_data()
 
@@ -83,7 +107,8 @@ def main():
         print("1. List all orcas")
         print("2. Search orcas")
         print("3. Log a sighting")
-        print("4. Quit")
+        print("4. Show stats")
+        print("5. Quit")
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
@@ -93,11 +118,12 @@ def main():
         elif choice == "3":
             log_sighting(data)
         elif choice == "4":
+            show_stats(data)
+        elif choice == "5":
             print("Goodbye!")
             break
         else:
-            print("Invalid choice, try 1-4.")
-
+            print("Invalid choice, try 1-5.")
 
 if __name__ == "__main__":
     main()
